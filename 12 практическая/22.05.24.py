@@ -51,16 +51,14 @@ def restou():
         def has_flavor(self, target_flavor):
             return target_flavor in self.flavors
 
-        # Методы для разных типов мороженого будут реализованы аналогично
-        # Например, метод для мороженого на палочке может выглядеть так:
+
         def stick_ice_cream(self):
             pass
 
-        # Метод для мягкого мороженого:
+ 
         def soft_ice_cream(self):
             pass
 
-    # Пример использования класса IceCreamStand
     cafe_location = "ул. Авиаторов Балтики, д. 10"
     working_hours = "Пн-Вс: 10:00 - 22:00"
     ice_creamm = IceCreamStand("Baskin Robbins", "мороженое", ["ванильное", "шоколадное"],
@@ -69,16 +67,15 @@ def restou():
     print("Локация:", ice_creamm.location)
     print("Время работы:", ice_creamm.working_hours)
     print("Сорта мороженого: ", ice_creamm.flavors)
-
-    # Добавление нового сорта мороженого
+    
     ice_creamm.add_flavor("банановое")
     print("Новый сорт мороженого добавлен: ", ice_creamm.flavors)
 
-    # Удаление старого сорта мороженого
+  
     ice_creamm.remove_flavor("ванильное")
     print("Старый сорт мороженого удален: ", ice_creamm.flavors)
 
-    # Проверка наличия сорта мороженого
+   
     if ice_creamm.has_flavor("шоколадное"):
         print("Мороженое 'Шоколадное' присутствует в меню.")
     else:
@@ -96,7 +93,7 @@ import tkinter as tk
 from tkinter import messagebox
 
 
-'''class IceCreamStand(tk.Tk):
+class IceCreamStand(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title('Кафе-мороженое')
@@ -133,4 +130,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()'''
+    main()
