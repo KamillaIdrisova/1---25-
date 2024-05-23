@@ -1,20 +1,20 @@
 def restou():
     class Restaurant:
-        def __init__(self, restaurant_name, cuisine_type, rating=0):
+        def __init__(self, restaurant_name, cuisine_type, raiting=0):
             self.restaurant_name = restaurant_name
             self.cuisine_type = cuisine_type
-            self.rating = rating
+            self.rating = raiting
 
         def describe_restaurant(self):
-            print(f"Ресторан {self.restaurant_name} специализируется на {self.cuisine_type} кухне Рейтинг: {self.rating} ")
+            print(f"Ресторан {self.restaurant_name} специализируется на {self.cuisine_type} кухне Рейтинг: {self.raiting} ")
 
         def open_restaurant(self):
             print(f"Ресторан {self.restaurant_name} открыт!")
 
-        def up_rating(self, new_rating):
-            if 0 <= new_rating <= 5:
-                self.rating = new_rating
-                print(f"Рейтинг ресторана {self.restaurant_name} обновлен! Новый рейтинг: {self.rating}")
+        def up_raiting(self, new_raiting):
+            if 0 <= new_raiting <= 5:
+                self.raiting = new_raiting
+                print(f"Рейтинг ресторана {self.restaurant_name} успешно обновлен! Новый рейтинг: {self.raiting}")
             else:
                 print("Рейтинг только от 0 до 5")
     newRestaurant = Restaurant("Токио-Сити", "универсальной", 5)
