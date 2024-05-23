@@ -2,24 +2,24 @@
 from PIL import Image
 import os
 
-soufil = 'Учебные файлы/АИП/пр9'
-tarfil = 'Учебные файлы/АИП/пр9'
+soufil = '../../Downloads/imag'
+tarfil = '../../Downloads/imags'
 
 if not os.path.exists(tarfil):
     os.makedirs(tarfil)
 
 # Функция обрабатывания изображения
-def process(image):
-    image = Image.open(image)
+def process(imag):
+    image = Image.open(imag)
     image = image.convert('RGB')
     image = image.point(lambda x: 255 - x)
-    images = os.path.join(tarfil, os.path.basename(image))
+    images = os.path.join(tarfil, os.path.basename(imag))
     image.save(images)
 
 # Обход всех файлов в исходной папке
 for image in os.listdir(soufil):
     if image.endswith('.jpg') or image.endswith('.png'):
-        file_path = os.path.join(soufil, image)
+        file_path = os.path.join(soufil, imag)
         process(file_path)
 
 
@@ -38,4 +38,3 @@ with open('zadanieaip.csv', newline='', encoding='utf-8') as csvfile:
         print(f"{product} - {quantity} шт. за {price} руб.")
 
 print(f"Итоговая сумма: {total_sum} руб.")
-
