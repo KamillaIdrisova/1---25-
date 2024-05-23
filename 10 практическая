@@ -1,1 +1,58 @@
+# number1
+import json
+
+filel = 'Downloads/zadachaaip2.json'
+with open(filel, 'r') as file:
+    data = json.load(file)
+products = data['products']
+
+product_name = input("Введите название продукта: ")
+product_price = int(input("Введите цену продукта: "))
+product_available = True if input("Продукт доступен? (Да/Нет): ").lower() == 'да' else False
+product_weight = int(input("Введите вес продукта: "))
+
+products.append({
+    "name": product_name,
+    "price": product_price,
+    "available": product_available,
+    "weight": product_weight
+})
+
+# обновление данных в файле
+with open("Downloads/zadachaaip2.json", 'w') as file:
+    json.dump(data, file, indent=4)
+
+for product in products:
+    name = product['name']
+    price = product['price']
+    available = 'В наличии' if product['available'] else 'Нет в наличии!'
+    weight = product['weight']
+
+    print(f"Название: {name}")
+    print(f"Цена: {price}")
+    print(f"Вес: {weight}")
+    print(f"{available}")
+    print()
+
+# number3
+def new():
+    ru_en_dict = {}
+    with open("Downloads/en-ru.txt", "r", encoding="utf-8") as file:
+        chit = file.readlines()
+        for line in chit:
+            en_words, ru_words = line.strip().split(' - ')
+            listru = ru_words.split(', ')
+            for ruword in listru:
+                if ru_words not in ru_en_dict:
+                    ru_en_dict[ru_words] = [en_words]
+                else:
+                    ru_en_dict[ru_words].append(en_words)
+    with open("Downloads/ru-en.txt", "w", encoding="utf-8") as file:
+        for ru_word in sorted(ru_en_dict.keys()):
+            en_words_str = ', '.join(sorted(ru_en_dict[ru_word]))
+            file.write(f"{ru_word} - {en_words_str}\n")
+
+new()
+
+
 
