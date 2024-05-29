@@ -30,3 +30,25 @@ get_weather_button = tk.Button(root, text="Узнать погоду", command=g
 get_weather_button.pack()
 
 root.mainloop()
+
+
+
+
+import wikipediaapi
+
+def facts(city):
+    wiki_wiki = wikipediaapi.Wikipedia('ru')
+    city = wiki_wiki.page(city)
+    if not city.exists():
+        return f"Нет информации о {city}"
+    sections = city.sections
+    facts_sec = None
+    for section in sections:
+        if 'historical' in section.lower() or 'history' in section.lower():
+            facts_sec = section
+            break
+    fact = city.section(facts_sec)
+    return fact
+
+cityy = "Воронеж"
+print(facts(cityy))
