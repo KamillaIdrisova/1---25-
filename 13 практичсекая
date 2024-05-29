@@ -1,21 +1,32 @@
-from tkinter import *
+import tkinter as tk
+from tkinter import messagebox
+import requests
 
-root =Tk()
+
+def get_weather():
+    city = city_entry.get()
+    key = "ваш_api_ключ_от_openweathermap"
+    url = "http://api.openweathermap.org/data/2.5/weather"
+    params = {'APPID': key,'q': city,"units": "metric"}
+
+    response = requests.get(url, params=params)
+    data = response.json()
+
+    info_wea = f'{str(data["name"])}: {data["main"]["temp"]}'
+    messagebox.showinfo("Погода", info_wea)
+
+root =tk.Tk()
 root['bg'] = '#fafafa'
 root.title('Приложение погоды')
 
 
-frame = Frame(root, bg='#99FF99', bd=5)
-frame.place(relx = 0.15, rely=0.15, relwidth=0.7, relheight=0.7)
+city_label = tk.Label(root, text="Введите название города:")
+city_label.pack()
 
-title=Label(frame, text='Прогноз погоды', bg='pink', font=40)
-title.pack()
+city_entry = tk.Entry(root)
+city_entry.pack()
 
-loginInput = Entry(frame, bg='white',font=30)
-loginInput.pack()
+get_weather_button = tk.Button(root, text="Узнать погоду", command=get_weather)
+get_weather_button.pack()
 
-passField = Entry(frame, bg='white',show='*')
-passField.pack
-
-btn = Button(frame)
 root.mainloop()
